@@ -3,6 +3,9 @@ version: "3"
 networks:
   LEMP:
 
+volumes: 
+  mariadb:
+
 services:
   nginx-proxy:
     container_name: LEMP_nginx_proxy
@@ -36,7 +39,7 @@ services:
     image: mariadb:latest
     container_name: LEMP_mariaDB
     volumes:
-      - ~/Desarrollo/database:/var/lib/mysql:rw
+      - mariadb:/var/lib/mysql:rw
     ports:
       - "3306:3306"
     depends_on:
